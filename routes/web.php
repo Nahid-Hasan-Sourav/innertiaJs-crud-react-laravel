@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AddClasssController;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
@@ -19,3 +20,6 @@ Route::get('/', function () {
         'users' => "hghas ghasg"
     ]);
 });
+
+Route::get('/all-class',[AddClasssController::class,'index'])->name('all-class');
+Route::post('/add-class',[AddClasssController::class,'store'])->name('add.class');

@@ -1,16 +1,18 @@
 import React from "react";
 import Layout from "../Layout/Layout";
+import SidebarLayout from "../Layout/SidebarLayout";
 
 const Home = () => {
     return (
         <Layout>
+            <SidebarLayout>
             <div>
                 <div className="overflow-x-auto">
                     <table className="table">
                         {/* head */}
                         <thead>
                             <tr>
-                               
+
                                 <th>Name</th>
                                 <th>Job</th>
                                 <th>Favorite Color</th>
@@ -20,7 +22,7 @@ const Home = () => {
                         <tbody>
                             {/* row 1 */}
                             <tr>
-                               
+
                                 <td>
                                     <div className="flex items-center gap-3">
                                         <div className="avatar">
@@ -55,14 +57,17 @@ const Home = () => {
                                     </button>
                                 </th>
                             </tr>
-                           
+
                         </tbody>
                         {/* foot */}
-                        
+
                     </table>
                 </div>
             </div>
+            </SidebarLayout>
+
         </Layout>
+
     );
 };
 
