@@ -12,9 +12,11 @@ class AddClasssController extends Controller
     }
 
     public function store(Request $request){
-        $data = $request->all();
-        // return response()->json(["data"=>"gfgd"]);
-        return Inertia::render('Components/StudentClass', ['data' => $data]);
+      
+        $data="asbs";
+     
+        return Inertia::render('StudentClass/StudentClass',["data"=>$data]);
+      
 
     }
 }

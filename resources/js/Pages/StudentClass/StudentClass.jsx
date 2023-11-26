@@ -4,16 +4,57 @@ import SidebarLayout from '../../Layout/SidebarLayout';
 import { FaRegEdit } from "react-icons/fa";
 import { MdDelete } from "react-icons/md";
 import StudentAddClassModal from '../Components/Modal/StudentAddClassModal';
+import { router } from '@inertiajs/react';
+import { Inertia } from '@inertiajs/inertia';
 
 const StudentClass = () => {
     const [modalOpen,setModalOpen]=useState(false)
     const IsOpenModal =(e)=>{
         setModalOpen(!modalOpen);
-        console.log("E...",e);
+        // console.log("E...",e);
     }
     const onClose=()=>{
         setModalOpen(!modalOpen)
     }
+    const submitAddClassForm = (e) => {
+        e.preventDefault();
+        const form = e.target;
+
+        const className = form.className.value;
+        const data = {
+            className,
+        };
+        // it's working
+        // router.post("/add-class", data, {
+        //     preserveScroll: false,
+        //     preserveState: true,
+        //     onSuccess: (res) => {
+        //         console.log(res); // Access the data property of the response
+        //     },
+        // });
+
+        // Inertia.post("/add-class", data)
+        // .then((res) => {
+        //     console.log(res); 
+        // })
+        // .catch((error) => {
+        //     console.error(error);
+        // });
+        // Inertia.post("/add-class", data, {
+        //     onSuccess: (res) => {
+        //         console.log(res); // Access the data property of the response
+        //     },
+        // });
+        
+        Inertia.post("/add-class", data, {
+            preserveState: true,
+            onSuccess: (res) => {
+                console.log(res); // Access the data property of the response
+            },
+        });
+        
+    };
+    
     return (
         <>
 
@@ -63,6 +104,7 @@ const StudentClass = () => {
                     <StudentAddClassModal
                     isOpen={modalOpen}
                     onClose={onClose}
+                    submitAddClassForm={submitAddClassForm}
                     />
                 </SidebarLayout>
             </Layout>
